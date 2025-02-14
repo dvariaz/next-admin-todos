@@ -2,7 +2,7 @@ import { RiLayoutMasonryFill } from 'react-icons/ri';
 import { LuListTodo } from 'react-icons/lu';
 import { PiComputerTowerFill } from 'react-icons/pi';
 import { BiCookie } from 'react-icons/bi';
-import { CiShoppingBasket } from 'react-icons/ci';
+import { CiShoppingBasket, CiShoppingCart } from 'react-icons/ci';
 
 import Sidebar from '@/features/shared/components/Sidebar';
 import ShoppingCartBadge from '@/features/shopping-cart/containers/ShoppingCartBadge';
@@ -40,6 +40,11 @@ const DashboardLayout: React.FC<IProps> = ({ children }) => {
             label: 'Products',
             href: '/dashboard/products',
             icon: <CiShoppingBasket size={20} />
+          },
+          {
+            label: 'Cart',
+            href: '/dashboard/cart',
+            icon: <CiShoppingCart size={20} />
           }
         ]} />
 
