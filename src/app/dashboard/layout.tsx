@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation';
+import { getServerSession, User } from 'next-auth';
 import { RiLayoutMasonryFill } from 'react-icons/ri';
 import { LuListTodo } from 'react-icons/lu';
 import { PiComputerTowerFill } from 'react-icons/pi';
@@ -6,15 +8,25 @@ import { CiShoppingBasket, CiShoppingCart } from 'react-icons/ci';
 
 import Sidebar from '@/features/shared/components/Sidebar';
 import ShoppingCartBadge from '@/features/shopping-cart/containers/ShoppingCartBadge';
+import { authOptions } from '@/features/auth/config';
 
 interface IProps {
   children: React.ReactNode;
 }
 
-const DashboardLayout: React.FC<IProps> = ({ children }) => {
+const DashboardLayout: React.FC<IProps> = async ({ children }) => {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect('/api/auth/signin');
+  }
+
+  const loggedUser = session?.user as User;
+
   return (
     <div className="flex">
       <Sidebar
+        user={loggedUser}
         items={[
           {
             label: 'Dashboard',
