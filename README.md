@@ -1,5 +1,7 @@
 # Development
 
+> Set environment variables in `.env` file
+
 * Install dependencies
 ```
 yarn
@@ -8,13 +10,16 @@ yarn
 * Start database
 ```
 docker-compose up -d
-```
-
-* 
+``` 
 
 * Start dev server
 ```
 yarn dev
+```
+
+* Seed database
+```
+Send a post request to `/api/seed`
 ```
 
 
