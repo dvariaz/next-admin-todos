@@ -1,7 +1,8 @@
+import clsx from 'clsx';
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
+import { AuthProvider } from '@/features/auth/components/AuthProvider';
 import "./globals.css";
-import clsx from 'clsx';
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -19,12 +20,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={clsx('antialiased', outfit.className)}
-      >
-        {children}
-      </body>
-    </html>
+    <AuthProvider>
+      <html lang="en">
+        <body
+          className={clsx('antialiased', outfit.className)}
+        >
+          {children}
+        </body>
+      </html>
+    </AuthProvider>
   );
 }
