@@ -28,7 +28,9 @@ const TabBar: React.FC<IProps> = ({ currentTabId, tabItems, onChangeTab, classNa
 
   return (
     <div className={clsx("bg-gray-750 px-2 py-3 rounded-lg", className)}>
-      <ul className="flex gap-4">
+      <ul
+        className="flex gap-4"
+        data-testid="tab-bar">
         {
           tabItems.map((item) => (
             <li key={item.id}>
@@ -37,10 +39,11 @@ const TabBar: React.FC<IProps> = ({ currentTabId, tabItems, onChangeTab, classNa
                 checked={currentTabId === item.id}
                 type="radio"
                 className="appearance-none"
+                data-testid="tab-item"
                 onChange={() => handleInputChange(item.id)}/>
               <label
                 htmlFor={item.id}
-                className={clsx("p-2 cursor-pointer hover:bg-gray-600 rounded-md", currentTabId === item.id && 'bg-indigo-600 hover:bg-indigo-500')} >
+                className={clsx("p-2 cursor-pointer hover:bg-gray-600 rounded-md", currentTabId === item.id && 'bg-indigo-600 hover:bg-indigo-500')}>
                 {item.label}
               </label>
             </li>
