@@ -22,6 +22,10 @@ yarn dev
 Send a post request to `/api/seed`
 ```
 
+#### Note: default user after seed execution
+email: `test@mail.com`
+password: `123456`
+
 
 # Prisma commands
 * Initialize prisma files
