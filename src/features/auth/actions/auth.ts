@@ -1,5 +1,15 @@
 import bcrypt from 'bcryptjs';
+import { getServerSession, Session } from 'next-auth';
 import prisma from '@/lib/prisma';
+import { authOptions } from '@/features/auth/config';
+
+export const getCurrentSession = async (): Promise<Required<Session>> => {
+  const currentSession = await getServerSession(authOptions);
+
+  if (!currentSession?.user) throw new Error('There is no user connected');
+
+  return currentSession as Required<Session>;
+};
 
 export const signInWithCredentials = async (email: string, password: string) => {
   if (!email || !password) return null;
